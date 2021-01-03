@@ -45,7 +45,6 @@ services:
             - REDIS_PASSWORD=redispass
         volumes:
             - ./dags:/usr/local/airflow/dags
-            - ./templates:/usr/local/airflow/templates
             - ./config/airflow.cfg:/usr/local/airflow/airflow.cfg
             - ./airflow-logs:/usr/local/airflow/logs
         expose:
@@ -78,7 +77,6 @@ services:
             - webserver
         volumes:
             - ./dags:/usr/local/airflow/dags
-            - ./templates:/usr/local/airflow/templates
             - ./airflow-logs:/usr/local/airflow/logs
         environment:
             - LOAD_EX=n
@@ -97,7 +95,6 @@ services:
             - scheduler
         volumes:
             - ./dags:/usr/local/airflow/dags
-            - ./templates:/usr/local/airflow/templates
             - ./airflow-logs:/usr/local/airflow/logs
             - ./data:/home/airflow
         environment:
