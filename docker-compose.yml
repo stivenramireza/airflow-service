@@ -46,6 +46,7 @@ services:
         volumes:
             - ./dags:/usr/local/airflow/dags
             - ./config/airflow.cfg:/usr/local/airflow/airflow.cfg
+            - ./airflow-logs:/usr/local/airflow/logs
         expose:
             - "8080"
         ports:
@@ -76,6 +77,7 @@ services:
             - webserver
         volumes:
             - ./dags:/usr/local/airflow/dags
+            - ./airflow-logs:/usr/local/airflow/logs
         environment:
             - LOAD_EX=n
             - FERNET_KEY=46BKJoQYlPPOexq0OhDZnIlNepKFf87WFwLbfzqDDho=
@@ -93,6 +95,7 @@ services:
             - scheduler
         volumes:
             - ./dags:/usr/local/airflow/dags
+            - ./airflow-logs:/usr/local/airflow/logs
             - ./data:/home/airflow
         environment:
             - FERNET_KEY=46BKJoQYlPPOexq0OhDZnIlNepKFf87WFwLbfzqDDho=
