@@ -30,7 +30,7 @@ default_args = {
     "email_on_failure": True,
     "retries": 1,
     "retry_delay": timedelta(seconds=30),
-    "start_date": datetime(2021, 1, 16, 12, 0),
+    "start_date": datetime(2021, 1, 16, 12, 5),
     "catchup_by_default": False,
     "provide_context": True
 }
@@ -79,7 +79,7 @@ with DAG(
         'gym_booking_julian',
         default_args=default_args,
         description='Gym booking service DAG',
-        schedule_interval='0 12 * * *'
+        schedule_interval='5 12 * * *'
 ) as dag:
 
     book_an_hour = PythonOperator(
