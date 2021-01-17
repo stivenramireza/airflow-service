@@ -30,13 +30,13 @@ default_args = {
     "email_on_failure": True,
     "retries": 1,
     "retry_delay": timedelta(seconds=30),
-    "start_date": datetime(2021, 1, 10, 12, 0),
+    "start_date": datetime(2021, 1, 16, 12, 0),
     "catchup_by_default": False,
     "provide_context": True
 }
 
 # Airflow Variables
-dag_config = Variable.get("GYM_BOOKING_STIVEN_VARIABLES", deserialize_json=True)
+dag_config = Variable.get("GYM_BOOKING_JULIAN_VARIABLES", deserialize_json=True)
 DRIVER_PATH = dag_config.get("DRIVER_PATH")
 OUTPUT_PATH = dag_config.get("OUTPUT_PATH")
 WEBSITE_URL = dag_config.get("WEBSITE_URL")
@@ -76,7 +76,7 @@ def dag_send_whatsapp_message(**kwargs) -> None:
     driver.close()
 
 with DAG(
-        'gym_booking_stiven',
+        'gym_booking_julian',
         default_args=default_args,
         description='Gym booking service DAG',
         schedule_interval='0 12 * * *'
