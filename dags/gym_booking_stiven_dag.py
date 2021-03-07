@@ -3,7 +3,7 @@ from airflow.models import Variable
 from datetime import datetime, timedelta
 from airflow.operators.python_operator import PythonOperator, BranchPythonOperator
 
-from gym_booking.website_bot import (
+from smartfit_booking.website_bot import (
     initialize,
     login_to_website,
     answer_questionnaire,
@@ -15,12 +15,12 @@ from gym_booking.website_bot import (
     send_message
 )
 
-from gym_booking.storage import (
+from smartfit_booking.storage import (
     save_file,
     remove_file
 )
 
-from gym_booking.data_access_api import get_data
+from smartfit_booking.data_access_api import get_data
 
 import os
 
@@ -70,6 +70,7 @@ def dag_send_whatsapp_message(**kwargs) -> None:
     image_path = kwargs["ti"].xcom_pull("download_qr_code")
     driver = initialize(DRIVER_PATH, OUTPUT_PATH, CHROME_PROFILE_PATH)
     login_to_whatsapp(driver, WHATSAPP_URL)
+    driver.save_screenshot('/home/airflow/login_to_whatsapp.png')
     search_chat(driver, CHAT_NAME)
     send_message(driver, image_path, PERSON_NAME, DESIRED_TIME)
     remove_file(image_path)
