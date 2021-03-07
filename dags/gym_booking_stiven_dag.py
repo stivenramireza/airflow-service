@@ -70,7 +70,6 @@ def dag_send_whatsapp_message(**kwargs) -> None:
     image_path = kwargs["ti"].xcom_pull("download_qr_code")
     driver = initialize(DRIVER_PATH, OUTPUT_PATH, CHROME_PROFILE_PATH)
     login_to_whatsapp(driver, WHATSAPP_URL)
-    driver.save_screenshot('/home/airflow/login_to_whatsapp.png')
     search_chat(driver, CHAT_NAME)
     send_message(driver, image_path, PERSON_NAME, DESIRED_TIME)
     remove_file(image_path)
