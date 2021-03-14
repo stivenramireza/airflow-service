@@ -30,7 +30,7 @@ default_args = {
     "email_on_failure": True,
     "retries": 1,
     "retry_delay": timedelta(seconds=30),
-    "start_date": datetime(2021, 3, 6, 11, 5),
+    "start_date": datetime(2021, 3, 13, 11, 5),
     "catchup_by_default": False,
     "provide_context": True
 }
